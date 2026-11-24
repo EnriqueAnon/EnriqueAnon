@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glenn.OS — Enrique Glenn Michael | Portfolio & Workspace</title>
+  <title>Glenn.OS — Enrique Glenn Michael | Portfolio &amp; Workspace</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -89,7 +89,7 @@
         <div class="min-w-0">
           <div class="flex items-center gap-2">
             <span class="font-bold tracking-tight text-white text-base">Glenn.OS</span>
-            <span class="text-[11px] font-mono px-1.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">v2.7</span>
+            <span class="text-[11px] font-mono px-1.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">v2.8</span>
           </div>
           <p class="text-xs text-zinc-400 truncate">Personal Workspace</p>
         </div>
@@ -624,7 +624,7 @@
         <p id="change-passkey-error" class="hidden text-xs text-rose-400"></p>
 
         <div class="flex items-center justify-between pt-2 border-t border-zinc-800">
-          <button type="button" onclick="resetPasskeyToDefault()" class="text-xs text-zinc-400 hover:text-amber-300 hover:underline">Reset to default (glenn2026)</button>
+          <button type="button" onclick="resetPasskeyToDefault()" class="text-xs text-zinc-400 hover:text-amber-300 hover:underline">Reset to default passkey</button>
           <div class="flex gap-2">
             <button type="button" onclick="closeModal('change-passkey-modal')" class="px-4 py-2 rounded-xl bg-zinc-800 text-xs text-zinc-300">Cancel</button>
             <button type="submit" class="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-semibold text-xs">Update Passkey</button>
@@ -895,9 +895,9 @@
   <!-- APPLICATION STATE & INTERACTIVE LOGIC                     -->
   <!-- ========================================================= -->
   <script>
-    const STORAGE_KEY = 'glenn_os_portfolio_state_v3';
-    const PASSKEY_STORAGE_KEY = 'glenn_os_owner_passkey_v1';
-    const DEFAULT_PASSKEY = 'glenn2026';
+    const STORAGE_KEY = 'glenn_os_portfolio_state_v4';
+    const PASSKEY_STORAGE_KEY = 'glenn_os_owner_passkey_v2';
+    const DEFAULT_PASSKEY = 'Putrique@1006';
 
     // Default tailored data for Enrique Glenn Michael (Glenn)
     const DEFAULT_STATE = {
@@ -1204,7 +1204,7 @@
       if (!isOwnerUnlocked) return;
       setStoredPasskey(DEFAULT_PASSKEY);
       closeModal('change-passkey-modal');
-      showToast('Passkey reset to default (glenn2026).');
+      showToast('Passkey reset to default.');
     }
 
     function handleVersionBadgeTripleTap() {
@@ -1353,7 +1353,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Toggle Edit Mode across the app (Owner-only)
     function toggleEditMode() {
       if (!isOwnerUnlocked) {
         openOwnerUnlockModal();

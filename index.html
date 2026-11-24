@@ -576,13 +576,6 @@
         Enter the owner passkey to reveal <strong class="text-zinc-200">Edit Mode</strong>, <strong class="text-zinc-200">+ Add Project</strong>, <strong class="text-zinc-200">+ Log Activity</strong>, and <strong class="text-zinc-200">JSON Backup/Restore</strong> for this session.
       </p>
 
-      <div class="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800/90 text-[11px] text-zinc-400 space-y-1">
-        <div class="font-mono text-amber-300/90">Static Site Security Note</div>
-        <p class="leading-relaxed">
-          On static hosts like GitHub Pages, browser passkeys act as a convenience lock rather than server-side authentication—anyone inspecting page source can see client-side scripts. Default passkey: <code class="px-1.5 py-0.5 rounded bg-zinc-950 text-emerald-300 border border-zinc-800">glenn2026</code>.
-        </p>
-      </div>
-
       <form onsubmit="handleOwnerUnlockSubmit(event)" class="space-y-3.5">
         <div>
           <label class="block text-xs font-medium text-zinc-400 mb-1">Owner Passkey</label>
@@ -631,7 +624,7 @@
         <p id="change-passkey-error" class="hidden text-xs text-rose-400"></p>
 
         <div class="flex items-center justify-between pt-2 border-t border-zinc-800">
-          <button type="button" onclick="resetPasskeyToDefault()" class="text-xs text-zinc-400 hover:text-amber-300 hover:underline">Reset to default (glenn2026)</button>
+          <button type="button" onclick="resetPasskeyToDefault()" class="text-xs text-zinc-400 hover:text-amber-300 hover:underline">Reset to default passkey</button>
           <div class="flex gap-2">
             <button type="button" onclick="closeModal('change-passkey-modal')" class="px-4 py-2 rounded-xl bg-zinc-800 text-xs text-zinc-300">Cancel</button>
             <button type="submit" class="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-semibold text-xs">Update Passkey</button>
@@ -904,7 +897,7 @@
   <script>
     const STORAGE_KEY = 'glenn_os_portfolio_state_v3';
     const PASSKEY_STORAGE_KEY = 'glenn_os_owner_passkey_v1';
-    const DEFAULT_PASSKEY = 'glenn2026';
+    const DEFAULT_PASSKEY = 'Putrique@1006';
 
     // Default tailored data for Enrique Glenn Michael (Glenn)
     const DEFAULT_STATE = {
@@ -1143,7 +1136,7 @@
         showToast('Owner Mode unlocked & Edit Mode active for this session.');
       } else {
         if (errEl) {
-          errEl.textContent = 'Incorrect passkey. Default is glenn2026 unless updated.';
+          errEl.textContent = 'Incorrect passkey. Please try again.';
           errEl.classList.remove('hidden');
         }
         input.select();
@@ -1211,10 +1204,10 @@
       if (!isOwnerUnlocked) return;
       setStoredPasskey(DEFAULT_PASSKEY);
       closeModal('change-passkey-modal');
-      showToast('Passkey reset to default (glenn2026).');
+      showToast('Passkey reset to default.');
     }
 
-    function handleVersionBadgeTripleTap() {
+    function loadState() {
       versionTapCount += 1;
       clearTimeout(versionTapTimer);
       versionTapTimer = setTimeout(() => {

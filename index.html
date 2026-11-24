@@ -624,7 +624,7 @@
         <p id="change-passkey-error" class="hidden text-xs text-rose-400"></p>
 
         <div class="flex items-center justify-between pt-2 border-t border-zinc-800">
-          <button type="button" onclick="resetPasskeyToDefault()" class="text-xs text-zinc-400 hover:text-amber-300 hover:underline">Reset to default passkey</button>
+          <button type="button" onclick="resetPasskeyToDefault()" class="text-xs text-zinc-400 hover:text-amber-300 hover:underline">Reset to default (glenn2026)</button>
           <div class="flex gap-2">
             <button type="button" onclick="closeModal('change-passkey-modal')" class="px-4 py-2 rounded-xl bg-zinc-800 text-xs text-zinc-300">Cancel</button>
             <button type="submit" class="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-zinc-950 font-semibold text-xs">Update Passkey</button>
@@ -897,7 +897,7 @@
   <script>
     const STORAGE_KEY = 'glenn_os_portfolio_state_v3';
     const PASSKEY_STORAGE_KEY = 'glenn_os_owner_passkey_v1';
-    const DEFAULT_PASSKEY = 'Putrique@1006';
+    const DEFAULT_PASSKEY = 'glenn2026';
 
     // Default tailored data for Enrique Glenn Michael (Glenn)
     const DEFAULT_STATE = {
@@ -1204,10 +1204,10 @@
       if (!isOwnerUnlocked) return;
       setStoredPasskey(DEFAULT_PASSKEY);
       closeModal('change-passkey-modal');
-      showToast('Passkey reset to default.');
+      showToast('Passkey reset to default (glenn2026).');
     }
 
-    function loadState() {
+    function handleVersionBadgeTripleTap() {
       versionTapCount += 1;
       clearTimeout(versionTapTimer);
       versionTapTimer = setTimeout(() => {
